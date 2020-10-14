@@ -6,7 +6,7 @@ require 'rails-i18n'
 module Redsys
   class Tpv
     attr_accessor :amount, :language, :order, :currency, :merchant_code, :terminal,
-                  :transaction_type, :merchant_url, :url_ok, :url_ko, :sha1, :signature
+                  :transaction_type, :merchant_url, :url_ok, :url_ko, :sha1, :signature, :bizum
 
     def self.tpv_url
       Rails.configuration.redsys_rails[:url]
@@ -16,7 +16,7 @@ module Redsys
       Rails.configuration.redsys_rails[:signature_version]
     end
 
-    def initialize(amount, order, language, merchant_url = nil, url_ok = nil, url_ko = nil, merchant_name = nil, product_description = nil)
+    def initialize(amount, order, language, merchant_url = nil, url_ok = nil, url_ko = nil, merchant_name = nil, product_description = nil, bizum = false)
       amount        ||= 0
       order         ||= 0
       language      ||= language_from_locale
@@ -39,6 +39,7 @@ module Redsys
       @merchant_code = Rails.configuration.redsys_rails[:merchant_code]
       @terminal = Rails.configuration.redsys_rails[:merchant_terminal]
       @transaction_type = Rails.configuration.redsys_rails[:merchant_transaction_type]
+      @pay_methods = bizum ? 'z' : ''
     end
 
     def language_from_locale
@@ -76,7 +77,8 @@ module Redsys
         :DS_MERCHANT_URLOK => @url_ok,
         :DS_MERCHANT_URLKO => @url_ko,
         :DS_MERCHANT_MERCHANTNAME => @merchant_name,
-        :DS_MERCHANT_PRODUCTDESCRIPTION => @product_description
+        :DS_MERCHANT_PRODUCTDESCRIPTION => @product_description,
+        :DS_MERCHANT_PAYMETHODS => @pay_methods
       }
       JSON.generate(merchant_parameters)
     end
