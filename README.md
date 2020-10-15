@@ -58,10 +58,16 @@ Valenciano-010, Polaco-011, Gallego-012 y Euskera-013
 Si no ha configurado las url's de retorno para transacción correcta y para transacción fallida en el panel de control de su comercio,
 puede proporcionarlas en la redirección mediante los parámetros url_ok y url_ko.
 
-Un ejemplo:
+##### Ejemplo tpv:
 
 ```ruby
 redirect_to redsys_form_path(amount: '20.35', order: '0001', language: '001', url_ok: 'http://misite.com/pedido_ok', url_ko: 'http://misite.com/pedido_error')
+```
+
+##### Ejemplo Bizum:
+
+```ruby
+redirect_to redsys_form_path(amount: '20.35', order: '0001', language: '001', url_ok: 'http://misite.com/pedido_ok', url_ko: 'http://misite.com/pedido_error', bizum: true)
 ```
 
 #### Datos de prueba
