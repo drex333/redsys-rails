@@ -39,7 +39,7 @@ module Redsys
       @merchant_code = Rails.configuration.redsys_rails[:merchant_code]
       @terminal = Rails.configuration.redsys_rails[:merchant_terminal]
       @transaction_type = Rails.configuration.redsys_rails[:merchant_transaction_type]
-      @pay_methods = bizum ? 'z' : ''
+      @bizum = bizum ? 'z' : ''
     end
 
     def language_from_locale
@@ -78,7 +78,7 @@ module Redsys
         :DS_MERCHANT_URLKO => @url_ko,
         :DS_MERCHANT_MERCHANTNAME => @merchant_name,
         :DS_MERCHANT_PRODUCTDESCRIPTION => @product_description,
-        :DS_MERCHANT_PAYMETHODS => @pay_methods
+        :DS_MERCHANT_PAYMETHODS => @bizum
       }
       JSON.generate(merchant_parameters)
     end

@@ -2,6 +2,7 @@
   <%= hidden_field_tag 'Ds_SignatureVersion', Redsys::Tpv.signature_version %>
   <%= hidden_field_tag 'Ds_MerchantParameters', @tpv.merchant_params %>
   <%= hidden_field_tag 'Ds_Signature', @tpv.merchant_signature %>
+  <%= hidden_field_tag 'Ds_Merchant_Paymethods', @tpv.bizum %>
 <% end %>
 <script type="text/javascript">
   document.getElementById("redsys_tpv_form").submit();
