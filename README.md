@@ -9,6 +9,7 @@ Redsys-Rails es una pequeña solución para integrar de forma rápida y sencilla
 ## Requerimientos
 - Esta gema solo proporciona las herramientas necesarias para integrar la opción de redirección desde la página web del comercio al TPV virtual contratado.
 - Es necesario disponer de las claves de acceso que la entidad financiera habrá proporcionado al comercio para poder instalar esta gema.
+- Para la utilización de Bizum es necesario que previamente tenga contratado este servicio con su banco.
 
 ## Instalación
 
