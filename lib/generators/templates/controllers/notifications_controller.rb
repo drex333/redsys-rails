@@ -19,8 +19,6 @@ module Redsys
             # The transaction result is ok. Register the payment here
           end
           status = :ok
-          session[:reports] = []
-          session[:products] = []
         else
           # The transaction failed although the signature was right because there was no Ds_Response, handle the exception however you want
           status = :bad_request
